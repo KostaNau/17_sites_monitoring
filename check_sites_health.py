@@ -34,7 +34,7 @@ def is_server_respond_with_200(url):
         http_ok = 200
         return requests.get(url).status_code == http_ok
     except requests.exceptions.ConnectionError:
-        return "Failed to establish a new connection: unknown url!!!"
+        return False
 
 
 def get_domain_expiration_date(url):
@@ -44,7 +44,7 @@ def get_domain_expiration_date(url):
         domain_date = domain.expiration_date
         return (domain_date - date_delta) > datetime.now()
     except TypeError:
-        return "Failed to determine expiration date. Unknown url!!!"
+        return False
 
 
 def main():
