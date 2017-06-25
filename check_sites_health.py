@@ -31,8 +31,7 @@ def load_urls4check(path):
 
 def is_server_respond_with_200(url):
     try:
-        http_ok = 200
-        return requests.get(url).status_code == http_ok
+        return requests.get(url).status_code == requests.codes.ok
     except requests.exceptions.ConnectionError:
         return False
 
